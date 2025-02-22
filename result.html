@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Suggestion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Your Career Recommendation</h1>
+    </header>
+
+    <section id="career-result">
+        <h2>Analyzing Your Answers...</h2>
+        <img id="career-image" src="" alt="Career Image" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px;">
+        <p id="career-description"></p>
+        <button onclick="window.location.href='index.html'">Go Back to Home</button>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    let career = sessionStorage.getItem("careerResult");
+    console.log("Career result from sessionStorage:", career); // Debugging line
+
+    let careerData = {
+        "Software Developer or Data Scientist": {
+            description: "You are analytical, love problem-solving, and enjoy working with technology. A career in software development or data science is a great fit for you!",
+            image: "images/tech-career.jpg"
+        },
+        "Graphic Designer or Content Creator": {
+            description: "You are highly creative and enjoy expressing yourself visually. A career in graphic design or content creation is perfect for you!",
+            image: "images/creative_career.jpg"
+        },
+        "Psychologist or Social Worker": {
+            description: "You love helping people and understanding human behavior. A career in psychology or social work is a great match for you!",
+            image: "images/social-career.jpg"
+        },
+        "Entrepreneur or Financial Analyst": {
+            description: "You are business-minded and enjoy management and strategy. A career as an entrepreneur or financial analyst suits you best!",
+            image: "images/business-career.jpg"
+        }
+    };
+
+    if (career && careerData[career]) {
+        document.getElementById("career-description").innerText = careerData[career].description;
+        document.getElementById("career-image").src = careerData[career].image;
+    } else {
+        document.getElementById("career-description").innerText = "Something went wrong! Please retake the quiz.";
+        document.getElementById("career-image").style.display = "none";
+    }
+});
+
+    </script>
+</body>
+</html>
